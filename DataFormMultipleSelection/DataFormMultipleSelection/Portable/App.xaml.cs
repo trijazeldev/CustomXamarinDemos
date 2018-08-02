@@ -4,10 +4,8 @@ using System.Linq;
 using System.Text;
 
 using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
 
-[assembly:XamlCompilation(XamlCompilationOptions.Compile)]
-namespace CustomSeriesLabels.Portable
+namespace DataFormMultipleSelection.Portable
 {
 	public partial class App : Application
 	{

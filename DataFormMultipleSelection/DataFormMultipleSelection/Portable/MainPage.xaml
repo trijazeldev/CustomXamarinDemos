@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:telerikInput="clr-namespace:Telerik.XamarinForms.Input;assembly=Telerik.XamarinForms.Input"
+             x:Class="DataFormMultipleSelection.Portable.MainPage">
+
+    <Grid Margin="0,20,0,0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <telerikInput:RadDataForm x:Name="dataForm"
+                                  Margin="10"/>
+
+        <StackLayout Margin="10"
+                     Grid.Row="1">
+            <Label x:Name="TestOutputLabel"
+                   FontAttributes="Italic"
+                   Text="Enum.Parse Test: " />
+
+            <Label x:Name="SelectedPreferenceLabel"
+                   Text="Preferences:" />
+            <!-- TODO Uncomment once the enum approach is working
+            <Label x:Name="SelectedTopicsLabel"
+                   Text="Topics: " />-->
+
+            <Button Text="Commit"
+                    Clicked="CommitButtonClicked" />
+        </StackLayout>
+    </Grid>
+</ContentPage>
