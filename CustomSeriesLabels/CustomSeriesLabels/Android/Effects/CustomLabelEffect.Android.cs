@@ -1,6 +1,9 @@
 ﻿using Android.Graphics;
+using Com.Telerik.Widget.Chart.Engine.DataPoints;
+using Com.Telerik.Widget.Chart.Engine.ElementTree;
 using Com.Telerik.Widget.Chart.Visualization.CartesianChart;
 using Com.Telerik.Widget.Chart.Visualization.CartesianChart.Series.Categorical;
+using Com.Telerik.Widget.Chart.Visualization.Common;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.Android;
 
@@ -26,7 +29,7 @@ namespace CustomSeriesLabels.Android.Effects
                         // set the Label properties you want
                         series.LabelFillColor = Color.Red;
                         series.LabelTextColor = Color.White;
-                        series.DataPointRenderer = new CustomPointRenderer();
+                        series.LabelRenderer = new MyLabelRenderer(series);
                     }
                 }
             }
@@ -37,13 +40,29 @@ namespace CustomSeriesLabels.Android.Effects
         }
     }
 
-    public class CustomPointRenderer : Java.Lang.Object, Com.Telerik.Widget.Chart.Visualization.CartesianChart.Series.Pointrenderers.IChartDataPointRenderer
+    public class MyLabelRenderer : CategoricalSeriesLabelRenderer
     {
-        public void RenderPoint(Canvas canvas, Com.Telerik.Widget.Chart.Engine.DataPoints.DataPoint p1)
+        public MyLabelRenderer(ChartSeries p0) : base(p0)
         {
-            canvas.DrawCircle((float)p1.CenterX, (float)p1.CenterY, 10, new Paint() { Color = Color.Red });
 
-            p1.Arrange(new Com.Telerik.Android.Common.Math.RadRect((float)p1.CenterX + 4, (float)p1.CenterY + 4));
+        }
+
+        public override void RenderLabel(Canvas p0, ChartNode p1)
+        {
+            base.RenderLabel(p0, p1);
+            DataPoint dataPoint = (DataPoint)p1;
+            p0.DrawCircle((float)dataPoint.CenterX, (float)dataPoint.CenterY, 10, new Paint() { Color = Color.Red });
         }
     }
 }
+
+
+//public class CustomPointRenderer : Java.Lang.Object, Com.Telerik.Widget.Chart.Visualization.CartesianChart.Series.Pointrenderers.IChartDataPointRenderer
+//{
+//    public void RenderPoint(Canvas canvas, Com.Telerik.Widget.Chart.Engine.DataPoints.DataPoint p1)
+//    {
+//        canvas.DrawCircle((float)p1.CenterX, (float)p1.CenterY, 10, new Paint() { Color = Color.Red });
+
+//        p1.Arrange(new Com.Telerik.Android.Common.Math.RadRect((float)p1.CenterX + 4, (float)p1.CenterY + 4));
+//    }
+//}
