@@ -12,5 +12,7 @@
              xmlns:telerikBarcode="clr-namespace:Telerik.XamarinForms.Barcode;assembly=Telerik.XamarinForms.Barcode"
              xmlns:telerikConversationalUI="clr-namespace:Telerik.XamarinForms.ConversationalUI;assembly=Telerik.XamarinForms.ConversationalUI"
              x:Class="AdaptiveCardsDemo.Portable.MainPage">
-    <Label Text="You are ready to use all controls from UI for XamarinForms suite." HorizontalOptions="Center" VerticalOptions="Center"/>
+    <Grid>
+        
+    </Grid>
 </ContentPage>
